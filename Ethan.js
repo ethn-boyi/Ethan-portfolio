@@ -200,7 +200,9 @@ drawParticles();
 
 
 // ── CONTACT FORM HANDLER ──
-emailjs.init('xaXg9sebzHztAztC8'); 
+document.addEventListener('DOMContentLoaded', () => {
+    emailjs.init('xaXg9sebzHztAztC8');
+});
 
 function handleSubmit() {
     const name    = document.getElementById('fname').value.trim();
