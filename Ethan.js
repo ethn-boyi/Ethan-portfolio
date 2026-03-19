@@ -200,6 +200,8 @@ drawParticles();
 
 
 // ── CONTACT FORM HANDLER ──
+emailjs.init('xaXg9sebzHztAztC8'); 
+
 function handleSubmit() {
     const name    = document.getElementById('fname').value.trim();
     const email   = document.getElementById('femail').value.trim();
@@ -214,10 +216,30 @@ function handleSubmit() {
         alert('Please enter a valid email address.');
         return;
     }
-    document.getElementById('formSuccess').style.display = 'block';
-    document.getElementById('fname').value    = '';
-    document.getElementById('femail').value   = '';
-    document.getElementById('fmessage').value = '';
+
+    const btn = document.querySelector('#contact .btn-primary');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    emailjs.send('service_zend0yp', 'template_jxytugc', {
+        from_name:  name,
+        from_email: email,
+        message:    message
+    })
+    .then(() => {
+        document.getElementById('formSuccess').style.display = 'block';
+        document.getElementById('fname').value    = '';
+        document.getElementById('femail').value   = '';
+        document.getElementById('fmessage').value = '';
+        btn.textContent = 'Send message';
+        btn.disabled = false;
+    })
+    .catch((error) => {
+        alert('Oops! Something went wrong. Please try again.');
+        console.error('EmailJS error:', error);
+        btn.textContent = 'Send message';
+        btn.disabled = false;
+    });
 }
 
 
