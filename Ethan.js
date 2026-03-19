@@ -221,11 +221,11 @@ function handleSubmit() {
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    emailjs.send('service_zend0yp', 'template_jxytugc', {
-        from_name:  name,
-        from_email: email,
-        message:    message
-    })
+    emailjs.send('service_zend0yp', 'template_pi5qw6p', {
+    name:    name,
+    email:   email,
+    message: message
+})
     .then(() => {
         document.getElementById('formSuccess').style.display = 'block';
         document.getElementById('fname').value    = '';
