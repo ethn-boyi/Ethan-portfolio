@@ -256,3 +256,5 @@ window.addEventListener('scroll', () => {
         a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
     });
 });
+
+document.getElementById('sendBtn').addEventListener('click', handleSubmit);
